@@ -55,6 +55,10 @@ try:
     HOST_CHECK_LOOP_TIME = int(os.getenv('HOST_CHECK_LOOP_TIME', 10))
     # which port to use for LetsEncrypt verification. Defaults to 80.
     HOST_CHECK_PORT = int(os.getenv('HOST_CHECK_PORT', 80))
+    # See below link for list of active and backup cert types
+    # https://letsencrypt.org/certificates/
+    VALID_ISSUERS = os.getenv('VALID_ISSUERS', "E5,E6,R10,R11").split(',')
+ 
 
 except KeyError as e:
     print("ERROR: Could not find an Environment variable set.")
@@ -250,9 +254,11 @@ class RancherService:
                         print("INFO: Upgrading staging cert to production for {0}".format(server))
                         self.create_cert(server)
                         self.post_cert(server)
-                    # See below link for list of active and backup cert types
-                    # https://letsencrypt.org/certificates/
-                    elif not STAGING and ("R3" not in server_cert_issuer and "R4" not in server_cert_issuer and "E1" not in server_cert_issuer  and "E2" not in server_cert_issuer):
+                    
+                    elif not STAGING and not any(
+                        [issuer in server_cert_issuer for 
+                         issuer in VALID_ISSUERS]
+                    ):
                         # we have a self-signed certificate we should replace with a prod certificate.
                         # this should only happen once on initial rancher install.
                         print("INFO: Replacing self-signed certificate: {0}, "
