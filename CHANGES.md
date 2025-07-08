@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  
  - Make list of valid certificate issuers configurable @instification
+ - Add Makefile with basic build and push commands
+
+### Fixed
+
+ - Upgrade pyOpenSSL dependency to 23.1.1 @instification
+ - Update list of valid certificate issuer codes @instification
+
 
 
 ## 1.0.0 - 2025-07-08
