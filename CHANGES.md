@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  
  - Add Makefile with basic build and push commands
+ - Make list of valid certificate issuers configurable @instification
+
+### Fixed
+
+ - Update list of valid certificate issuer codes @instification
 
 ### Changed
 
