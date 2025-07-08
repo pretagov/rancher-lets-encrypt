@@ -9,11 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
  
- - Make list of valid certificate issuers configurable @instification
+ - Add Makefile with basic build and push commands
 
 ### Changed
 
- - Updated python version and some dependencies @instification
+ - Upgrade pyOpenSSL dependency to 23.1.1 @instification
+ - Upgrade python to 3.11 @instification
+ - Downgrade josepy to <2.0 @instification
+ - Downgrade zope.event to 5.0 @instiication
 
 
 ## 1.0.0 - 2025-07-08
