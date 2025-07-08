@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  
  - Make list of valid certificate issuers configurable @instification
 
+### Changed
+
+ - Updated python version and some dependencies @instification
+
 
 ## 1.0.0 - 2025-07-08
 
