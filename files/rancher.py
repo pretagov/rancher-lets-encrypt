@@ -464,7 +464,7 @@ class RancherService:
     def port_open(self, host, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((host, port))
-        return result is 0
+        return result == 0
 
     def check_hostnames_and_ports(self):
         done = False
