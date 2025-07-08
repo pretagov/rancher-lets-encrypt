@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM python:3.11-alpine
 
 RUN apk update
 RUN apk add --no-cache gcc py-pip musl-dev libffi-dev openssl-dev linux-headers openssl libffi cargo
