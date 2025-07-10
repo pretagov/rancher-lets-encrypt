@@ -58,7 +58,9 @@ try:
     # See below link for list of active and backup cert types
     # https://letsencrypt.org/certificates/
     VALID_ISSUERS = os.getenv('VALID_ISSUERS', "E5,E6,R10,R11").split(',')
- 
+    # which server to use, defaults to letsencrypt
+    CERTBOT_SERVER = os.getenv('CERTBOT_SERVER',
+                               "https://acme-v02.api.letsencrypt.org/directory")
 
 except KeyError as e:
     print("ERROR: Could not find an Environment variable set.")
@@ -288,12 +290,12 @@ class RancherService:
         # https://www.metachris.com/2015/12/comparison-of-10-acme-lets-encrypt-clients/#client-simp_le maybe?
         if STAGING:
             proc = subprocess.Popen(["certbot", "certonly", "--webroot", "-w", CERTBOT_WEBROOT,
-                                     "--text", "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
+                                     "--text", "--server", CERTBOT_SERVER, "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
                                      "--renew-by-default", "--staging"], stdout=subprocess.PIPE)
         else:
             # production
             proc = subprocess.Popen(["certbot", "certonly", "--webroot", "-w", CERTBOT_WEBROOT,
-                                     "--text", "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
+                                     "--text", "--server", CERTBOT_SERVER, "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
                                      "--renew-by-default"], stdout=subprocess.PIPE)
         # wait for the process to return
         com = proc.communicate()[0]
