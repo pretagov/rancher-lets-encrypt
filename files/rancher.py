@@ -289,12 +289,12 @@ class RancherService:
         if STAGING:
             proc = subprocess.Popen(["certbot", "certonly", "--webroot", "-w", CERTBOT_WEBROOT,
                                      "--text", "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
-                                     "--renew-by-default", "--staging"], stdout=subprocess.PIPE)
+                                     "--renew-by-default", "--non-interactive", "--staging"], stdout=subprocess.PIPE)
         else:
             # production
             proc = subprocess.Popen(["certbot", "certonly", "--webroot", "-w", CERTBOT_WEBROOT,
                                      "--text", "-d", server, "-m", CERTBOT_EMAIL, "--agree-tos",
-                                     "--renew-by-default"], stdout=subprocess.PIPE)
+                                     "--renew-by-default", "--non-interactive"], stdout=subprocess.PIPE)
         # wait for the process to return
         com = proc.communicate()[0]
         # read cert in from file

@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
- - Upgraded certbot to 5.1.0
+ - Upgrade certbot to 5.1.0 @instification
+ - Set --non-interactive when calling certbot @instification
 
 
 ## 1.0.1 - 2025-07-09
